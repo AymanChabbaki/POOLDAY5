@@ -52,14 +52,15 @@ function sortBooksByPrice() {
   for (let i = 0; i < sortedBooks.length - 1; i++) {
     for (let j = 0; j < sortedBooks.length - i - 1; j++) {
       if (sortedBooks[j].price > sortedBooks[j + 1].price) {
-        const temp = sortedBooks[j];
-        sortedBooks[j] = sortedBooks[j + 1];
-        sortedBooks[j + 1] = temp;
+        [sortedBooks[j + 1], sortedBooks[j]] = [sortedBooks[j], sortedBooks[j + 1]];
       }
     }
   }
   return sortedBooks;
 }
+const calculateDiscountedPrice = (price, discount) => price - (price * discount / 100);
+
+console.log(calculateDiscountedPrice(10, 15));
 
 (function main() {
   try {
